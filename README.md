@@ -7,5 +7,5 @@ USPTO trademark client in golang
 
 ## Test
 1. Copy env_sample as .env
-2. edit .env with your API key
-3. `go test ./...`
+2. Edit .env with your API key
+3. Run `go test ./...`
