@@ -16,6 +16,7 @@ type TrademarkAvailableResponse struct {
 	Available string
 }
 
+// See https://rapidapi.com/pentium10/api/uspto-trademark
 type usptoTradeMarkService struct {
 	urlFormat    string
 	rapidAPIKey  string
@@ -56,8 +57,7 @@ func (t *usptoTradeMarkService) IsAvailable(ctx context.Context, searchTerm stri
 	}
 
 	var responses []TrademarkAvailableResponse
-	err = json.Unmarshal(bodyBytes, &responses)
-	if err != nil {
+	if err = json.Unmarshal(bodyBytes, &responses); err != nil {
 		return false, fmt.Errorf("error unmarshalling response body (%v); %v", string(bodyBytes), err)
 	}
 
