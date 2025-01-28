@@ -19,9 +19,10 @@ func TestIsAvailable(t *testing.T) {
 	}
 
 	for _, testCase := range []struct {
-		name       string
-		searchTerm string
-		expected   bool
+		name         string
+		searchTerm   string
+		expected     bool
+		errorMessage string
 	}{
 		{
 			name:       "a known trademark should not be available",
@@ -33,11 +34,21 @@ func TestIsAvailable(t *testing.T) {
 			searchTerm: "_asdf_",
 			expected:   true,
 		},
+		{
+			name:         "an empty searchTerm should not be available",
+			searchTerm:   "",
+			expected:     false,
+			errorMessage: "search term is empty",
+		},
 	} {
 		t.Run(testCase.name, func(t *testing.T) {
 			service := NewUSPTOTradeMarkService(apiKey)
 			actual, err := service.IsAvailable(context.Background(), testCase.searchTerm)
-			require.NoErrorf(t, err, "Error: %v", err)
+			if testCase.errorMessage != "" {
+				require.EqualError(t, err, testCase.errorMessage)
+			} else {
+				require.NoErrorf(t, err, "Error: %v", err)
+			}
 			require.Equal(t, testCase.expected, actual)
 		})
 	}

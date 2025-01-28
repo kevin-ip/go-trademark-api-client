@@ -31,6 +31,10 @@ func NewUSPTOTradeMarkService(apiKey string) go_markerapi_client.TradeMarkServic
 }
 
 func (t *usptoTradeMarkService) IsAvailable(ctx context.Context, searchTerm string) (bool, error) {
+	if searchTerm == "" {
+		return false, fmt.Errorf("search term is empty")
+	}
+
 	req, err := t.createRequest(searchTerm)
 	if err != nil {
 		return false, err
@@ -54,7 +58,7 @@ func (t *usptoTradeMarkService) IsAvailable(ctx context.Context, searchTerm stri
 	var responses []TrademarkAvailableResponse
 	err = json.Unmarshal(bodyBytes, &responses)
 	if err != nil {
-		return false, err
+		return false, fmt.Errorf("error unmarshalling response body (%v); %v", string(bodyBytes), err)
 	}
 
 	for _, res := range responses {
