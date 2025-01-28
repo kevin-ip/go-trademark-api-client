@@ -1,6 +1,7 @@
 package uspto_trademark
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -29,7 +30,7 @@ func NewUSPTOTradeMarkService(apiKey string) go_markerapi_client.TradeMarkServic
 	}
 }
 
-func (t *usptoTradeMarkService) IsAvailable(searchTerm string) (bool, error) {
+func (t *usptoTradeMarkService) IsAvailable(ctx context.Context, searchTerm string) (bool, error) {
 	req, err := t.createRequest(searchTerm)
 	if err != nil {
 		return false, err

@@ -1,6 +1,7 @@
 package uspto_trademark
 
 import (
+	"context"
 	"os"
 	"testing"
 
@@ -35,7 +36,7 @@ func TestIsAvailable(t *testing.T) {
 	} {
 		t.Run(testCase.name, func(t *testing.T) {
 			service := NewUSPTOTradeMarkService(apiKey)
-			actual, err := service.IsAvailable(testCase.searchTerm)
+			actual, err := service.IsAvailable(context.Background(), testCase.searchTerm)
 			require.NoErrorf(t, err, "Error: %v", err)
 			require.Equal(t, testCase.expected, actual)
 		})
