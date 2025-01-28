@@ -1,4 +1,4 @@
-package go_markerapi_client
+package uspto_trademark
 
 import (
 	"os"
@@ -9,7 +9,7 @@ import (
 )
 
 func TestIsAvailable(t *testing.T) {
-	err := godotenv.Load()
+	err := godotenv.Load("../.env")
 	require.NoError(t, err)
 
 	apiKey := os.Getenv("API_KEY")
