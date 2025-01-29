@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "managers": ["goModules"],
+      "managers": ["gomod"],
       "updateTypes": ["major" ,"minor", "patch"],
       "automerge": false
     }
@@ -13,8 +13,5 @@
   "postUpdateOptions": ["gomodTidy", "gomodUpdateImportPaths"],
   "labels": ["dependencies", "renovate"],
   "dependencyDashboard": true,
-  "schedule": ["before 3am on monday"],
-  "gitHubApp": {
-    "enabled": true
-  }
+  "schedule": [ "* 0-3 * * 1"]
 }
