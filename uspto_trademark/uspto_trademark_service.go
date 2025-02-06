@@ -8,7 +8,7 @@ import (
 	"log"
 	"net/http"
 
-	"kevin-ip/go-trademark-api-client"
+	"github.com/kevin-ip/go-trademark-api-client"
 )
 
 type TrademarkAvailableResponse struct {

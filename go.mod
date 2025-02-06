@@ -1,4 +1,4 @@
-module kevin-ip/go-trademark-api-client
+module github.com/kevin-ip/go-trademark-api-client
 
 go 1.23.5
 
