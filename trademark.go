@@ -12,6 +12,12 @@ type TrademarkService interface {
 	IsAvailable(ctx context.Context, searchTerm string) (bool, error)
 }
 
-func NewTrademarkService(vendor string, apiKey string) TrademarkService {
+func NewTrademarkService(vendor Vendor, apiKey string) TrademarkService {
 	return uspto_trademark.NewUSPTOTradeMarkService(apiKey)
 }
+
+type Vendor int64
+
+const (
+	PENTIUM10_USPTO_TRADEBMARK Vendor = iota
+)
