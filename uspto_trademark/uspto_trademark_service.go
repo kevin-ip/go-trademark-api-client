@@ -17,21 +17,21 @@ type TrademarkAvailableResponse struct {
 }
 
 // See https://rapidapi.com/pentium10/api/uspto-trademark
-type usptoTradeMarkService struct {
+type usptoTrademarkService struct {
 	urlFormat    string
 	rapidAPIKey  string
 	rapidAPIHost string
 }
 
-func NewUSPTOTradeMarkService(apiKey string) go_markerapi_client.TradeMarkService {
-	return &usptoTradeMarkService{
+func NewUSPTOTradeMarkService(apiKey string) go_markerapi_client.TrademarkService {
+	return &usptoTrademarkService{
 		urlFormat:    "https://uspto-trademark.p.rapidapi.com/v1/trademarkAvailable/%v",
 		rapidAPIKey:  apiKey,
 		rapidAPIHost: "uspto-trademark.p.rapidapi.com",
 	}
 }
 
-func (t *usptoTradeMarkService) IsAvailable(ctx context.Context, searchTerm string) (bool, error) {
+func (t *usptoTrademarkService) IsAvailable(ctx context.Context, searchTerm string) (bool, error) {
 	if searchTerm == "" {
 		return false, fmt.Errorf("search term is empty")
 	}
@@ -70,7 +70,7 @@ func (t *usptoTradeMarkService) IsAvailable(ctx context.Context, searchTerm stri
 	return true, nil
 }
 
-func (t *usptoTradeMarkService) createRequest(searchTerm string) (*http.Request, error) {
+func (t *usptoTrademarkService) createRequest(searchTerm string) (*http.Request, error) {
 	searchURL := fmt.Sprintf(t.urlFormat, searchTerm)
 	req, err := http.NewRequest("GET", searchURL, nil)
 	if err != nil {
