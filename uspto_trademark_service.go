@@ -60,7 +60,6 @@ func (t *usptoTrademarkService) IsAvailable(ctx context.Context, searchTerm stri
 	}
 
 	for _, res := range responses {
-		log.Printf("res: %+v", res)
 		if res.Keyword == searchTerm && res.Available == "no" {
 			return false, nil
 		}

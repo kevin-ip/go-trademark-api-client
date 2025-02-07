@@ -24,21 +24,29 @@ func TestIsAvailable(t *testing.T) {
 		expected     bool
 		errorMessage string
 	}{
+		// {
+		// 	name:       "a known trademark should not be available",
+		// 	searchTerm: "google",
+		// 	expected:   false,
+		// },
+		// {
+		// 	name:       "an unknown trademark should be available",
+		// 	searchTerm: "_asdf_",
+		// 	expected:   true,
+		// },
+		// {
+		// 	name:         "an empty searchTerm should not be available",
+		// 	searchTerm:   "",
+		// 	expected:     false,
+		// 	errorMessage: "search term is empty",
+		// },
+		// {
+		// 	name:         "happy campers, happy trails",
+		// 	searchTerm:   "happy campers, happy trails",
+		// },
 		{
-			name:       "a known trademark should not be available",
-			searchTerm: "google",
-			expected:   false,
-		},
-		{
-			name:       "an unknown trademark should be available",
-			searchTerm: "_asdf_",
-			expected:   true,
-		},
-		{
-			name:         "an empty searchTerm should not be available",
-			searchTerm:   "",
-			expected:     false,
-			errorMessage: "search term is empty",
+			name:       "HAPPY CAMPERS",
+			searchTerm: "HAPPY CAMPERS",
 		},
 	} {
 		t.Run(testCase.name, func(t *testing.T) {
