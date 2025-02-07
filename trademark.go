@@ -2,8 +2,6 @@ package go_markerapi_client
 
 import (
 	"context"
-
-	"github.com/kevin-ip/go-trademark-api-client/uspto_trademark"
 )
 
 type TrademarkService interface {
@@ -13,7 +11,7 @@ type TrademarkService interface {
 }
 
 func NewTrademarkService(vendor Vendor, apiKey string) TrademarkService {
-	return uspto_trademark.NewUSPTOTradeMarkService(apiKey)
+	return NewUSPTOTradeMarkService(apiKey)
 }
 
 type Vendor int64

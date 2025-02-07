@@ -1,4 +1,4 @@
-package uspto_trademark
+package go_markerapi_client
 
 import (
 	"context"
@@ -7,8 +7,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-
-	"github.com/kevin-ip/go-trademark-api-client"
 )
 
 type TrademarkAvailableResponse struct {
@@ -23,7 +21,7 @@ type usptoTrademarkService struct {
 	rapidAPIHost string
 }
 
-func NewUSPTOTradeMarkService(apiKey string) go_markerapi_client.TrademarkService {
+func NewUSPTOTradeMarkService(apiKey string) TrademarkService {
 	return &usptoTrademarkService{
 		urlFormat:    "https://uspto-trademark.p.rapidapi.com/v1/trademarkAvailable/%v",
 		rapidAPIKey:  apiKey,
