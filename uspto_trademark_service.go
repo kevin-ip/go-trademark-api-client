@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 )
 
 type TrademarkAvailableResponse struct {
@@ -60,7 +61,7 @@ func (t *usptoTrademarkService) IsAvailable(ctx context.Context, searchTerm stri
 	}
 
 	for _, res := range responses {
-		if res.Keyword == searchTerm && res.Available == "no" {
+		if strings.ToLower(res.Keyword) == strings.ToLower(searchTerm) && res.Available == "no" {
 			return false, nil
 		}
 	}
