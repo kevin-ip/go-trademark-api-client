@@ -1,4 +1,4 @@
-package go_markerapi_client
+package go_trademark_api_client
 
 import (
 	"context"
